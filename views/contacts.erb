@@ -1,0 +1,17 @@
+<h2>Оставьте пожалуйста Ваше имя и телефон.</h2>
+
+<form action="/contacts" method="POST">
+
+  <div class="form-group">
+    <label>Ваше имя</label>
+    <input name="contact_name" type="text" class="form-control" placeholder="Введите имя" value="<%=@contact_name%>">
+  </div>
+
+  <div class="form-group">
+    <label>Ваш телефон</label>
+    <input name="contact_phone" type="text" class="form-control" placeholder="Введите телефон" value="<%=@contact_phone%>">
+  </div>
+
+<button type="submit" class="btn btn-success">Оставить данные</button>
+
+</form>

@@ -11,6 +11,9 @@ end
 class Barber < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base
+end
+
 before do
     @barbers = Barber.all
 end
@@ -21,6 +24,10 @@ end
 
 get '/visit' do
     erb :visit
+end
+
+get '/contacts' do
+    erb :contacts
 end
 
 post '/visit' do
@@ -45,4 +52,14 @@ post '/visit' do
 
     erb "<h2>Спасибо, Вы записались!</h2>"
 
+end
+
+post '/contacts' do
+    @contact_name = params[:contact_name]
+    @contact_phone = params[:contact_phone]
+
+    contacts = Contact.new name: @contact_name, phone: @contact_phone
+    contacts.save
+
+    erb "<h2>Спасибо, Мы Вам перезвоним!</h2>"
 end
