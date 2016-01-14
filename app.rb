@@ -31,25 +31,9 @@ get '/contacts' do
 end
 
 post '/visit' do
-    @username = params[:username]
-    @phone = params[:phone]
-    @datetime = params[:datetime]
-    @barber = params[:barber]
-    @color = params[:color]
-
-    hh = { username: 'Введите имя',
-           phone: 'Введите телефон',
-           datetime: 'Введите дату и время' }
-    #для каждой пары ключ-значение
-    @error = hh.select {|key,_| params[key] == ""}.values.join(", ")
-
-    if @error != ''
-      return erb :visit
-    end
-
-    clients = Client.new name: @username, phone: @phone, datestamp: @datetime, barber: @barber, color: @color
-    clients.save
-
+    c = Client.new params[:client]
+    c.save
+    
     erb "<h2>Спасибо, Вы записались!</h2>"
 
 end
